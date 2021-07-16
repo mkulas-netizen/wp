@@ -13,11 +13,7 @@ $getRecords = new wpConnect(
     $_SESSION['secret'],$_POST);
 
 $getRecords->connect(true);
-
-print_r($getRecords);
-
-
-//header('Location: ' . $_SERVER['HTTP_REFERER']);
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else {
     echo '<h2 class="text-center text-danger">Request POST !!! </h2>';
 }

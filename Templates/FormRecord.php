@@ -3,12 +3,12 @@
     <select id="jsmySelect" name="type" class="form-select mt-5 mb-5" aria-label="Default select example">
         <option class="j_end" selected value="A">A</option>
         <option class="j_end" value="AAAA">AAAA</option>
-        <option class="j_mx_s" value="MX">MX</option>x
+        <option class="j_mx_s" value="MX">MX</option>
         <option class="j_end" value="ANAME">ANAME</option>
         <option class="j_end" value="CNAME">CNAME</option>
         <option class="j_end" value="NS">NS</option>
         <option class="j_end" value="TXT">TXT</option>
-        <option class="j_svr_s" value="SRV">SRV</option>x
+        <option class="j_svr_s" value="SRV">SRV</option>
     </select>
 </div>
 <div class="mb-3 text-right">

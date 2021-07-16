@@ -87,3 +87,9 @@ require $routes["/$page"][$method];
  * Template footer for all page
  */
 require_once 'Templates/Footer.php';
+
+
+/**
+ * https://drive.google.com/file/d/1QkOfKNZiUeZfhNjASYDvXSpRyEiAk_gz/view
+ * https://drive.google.com/file/d/18zeZUiqd5t2ugdqNZ-wya3YQZEZi8oXj/view
+ */
