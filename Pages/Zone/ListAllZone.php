@@ -10,7 +10,8 @@ $listZones = new wpConnect(
         'GET',
         '/v1/user/'.$_SESSION['user'].'/zone',
         $_SESSION['apiKey'],
-        $_SESSION['secret']);
+        $_SESSION['secret']
+);
 
 $zonesData = $listZones->connect();
 ?>

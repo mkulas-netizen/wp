@@ -1,5 +1,7 @@
 <?php
 define('BASE_URL','http://localhost/wp/');
+
+
 /**
  * 404 page
  */
@@ -13,8 +15,8 @@ function show_404()
 
 
 /**
- * http
- * https
+ * @return string
+ * http | https
  */
 function get_http()
 {
@@ -26,6 +28,7 @@ function get_http()
 
 /**
  * @return false|string[]
+ * segment url
  */
 function get_segments()
 {
@@ -42,11 +45,10 @@ function get_segments()
 
 /**
  * @param $index
- * @return bool|mixed
+ * @return false|mixed|string
  */
 function segment($index)
 {
     $segments = get_segments();
-    // vo funkcii segments
     return isset($segments[$index - 1]) ? $segments[$index - 1] : false;
 }

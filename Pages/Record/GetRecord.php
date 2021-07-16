@@ -2,13 +2,21 @@
 
 use App\wpConnect\wpConnect;
 
-$getRecords = new wpConnect(
-    'GET',
-    '/v1/user/' . $_GET['user'] . '/zone/' . $_GET['domain'] . '/record/' . $_GET['recordId'],
-    $_SESSION['apiKey'],
-    $_SESSION['secret']);
+/**
+ * Get record ID
+ */
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $getRecords = new wpConnect(
+        'GET',
+        '/v1/user/' . $_SESSION['user'] . '/zone/' . $_GET['domain'] . '/record/' . $_GET['recordId'],
+        $_SESSION['apiKey'],
+        $_SESSION['secret']);
 
-$recordsData = $getRecords->connect();
+    $recordsData = $getRecords->connect();
+} else {
+    echo '<h2 class="text-center text-danger">Request GET !!! </h2>';
+}
+
 ?>
 
 <h3 class="text-center mt-5">Get all records</h3>
@@ -51,7 +59,13 @@ $recordsData = $getRecords->connect();
 
 <h3 class="text-center mt-5">Update record </h3>
 <form method="POST" action="recordUpdate" class="mb-5">
-    <?php include 'Templates/FormRecord.php';?>
+
+    <?php
+    /**
+     * Template form for Store and Destroy data .
+     */
+    include 'Templates/FormRecord.php';
+    ?>
     <input type="hidden" name="recordId" value="<?= $recordsData->id; ?>">
     <input type="submit" class="btn btn-success" value="Update">
 </form>

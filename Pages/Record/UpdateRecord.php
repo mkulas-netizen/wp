@@ -1,13 +1,16 @@
 <?php
 use App\wpConnect\wpConnect;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $getRecords = new wpConnect(
+        'PUT',
+        '/v1/user/' . $_SESSION['user'] . '/zone/' . $_SESSION['domain'] . '/record/' . $_POST['recordId'],
+        $_SESSION['apiKey'],
+        $_SESSION['secret'], $_POST);
 
-$data = json_encode($_POST);
-$getRecords = new wpConnect(
-    'PUT',
-    '/v1/user/' . $_SESSION['user'] . '/zone/' . $_SESSION['domain'] . '/record/' . $_POST['recordId'],
-    $_SESSION['apiKey'],
-    $_SESSION['secret'],$data);
+    $getRecords->connect(true);
 
-$getRecords->connect();
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+} else {
+    echo '<h2 class="text-center text-danger">Request POST !!! </h2>';
+}

@@ -25,7 +25,7 @@ class wpConnect
      * @param null $data
      * @param null $query
      */
-    public function __construct($method, $path,$apiKey, $secret,$data = null,$query = null)
+    public function __construct($method, $path,$apiKey,$secret,$data = null,$query = null)
     {
         $this->method = $method;
         $this->path = $path;
@@ -36,9 +36,11 @@ class wpConnect
     }
 
     /**
+     * If insert true -> send data for item
+     * @param false $insert
      * @return mixed
      */
-    public function connect()
+    public function connect(bool $insert = false)
     {
         $time = time();
         $canonicalRequest = sprintf('%s %s %s', $this->method, $this->path, $time);
@@ -48,7 +50,12 @@ class wpConnect
         curl_setopt($param, CURLOPT_URL, sprintf('%s%s%s', 'https://rest.websupport.sk', $this->path, $this->query));
         curl_setopt($param, CURLOPT_CUSTOMREQUEST, $this->method);
         curl_setopt($param, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($param, CURLOPT_POSTFIELDS, $this->data);
+
+
+        if ($insert == true) {
+            curl_setopt($param, CURLOPT_POSTFIELDS, json_encode($this->data));
+        }
+
         curl_setopt($param, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($param, CURLOPT_USERPWD, $this->apiKey . ':' . $signature);
         curl_setopt($param, CURLOPT_HTTPHEADER, array(

@@ -1,15 +1,22 @@
 <?php
 
 use App\wpConnect\wpConnect;
-$getRecords = new wpConnect(
-    'GET',
-    '/v1/user/' . $_SESSION['user'] . '/zone/' . $_SESSION['domain'] . '/record',
-    $_SESSION['apiKey'],
-    $_SESSION['secret']);
 
-$recordsData = $getRecords->connect(); ?>
+/**
+ * All records
+ */
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $getRecords = new wpConnect(
+        'GET',
+        '/v1/user/' . $_SESSION['user'] . '/zone/' . $_SESSION['domain'] . '/record',
+        $_SESSION['apiKey'],
+        $_SESSION['secret']);
 
-
+    $recordsData = $getRecords->connect();
+} else {
+    echo '<h2 class="text-center text-danger">Request GET !!! </h2>';
+}
+?>
 <h3 class="text-center mt-5">Select or create records for <?= $_SESSION['domain']; ?></h3>
 <form method="get" action="record">
     <table class="table table-sm table-dark">
@@ -50,7 +57,7 @@ $recordsData = $getRecords->connect(); ?>
 
 <h3 class="text-center mt-5">Create record </h3>
 <form method="POST" action="record" class="mb-5">
-    <?php  include 'Templates/FormRecord.php';?>
+    <?php include 'Templates/FormRecord.php'; ?>
     <input type="submit" class="btn btn-success" value="Create">
 
 </form>

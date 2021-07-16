@@ -12,20 +12,22 @@
 
 
 <script>
-    $(document).on('click','.j_mx_s',function (){
-        $('.mx').removeClass('d-none');
-        $('.svr').addClass('d-none');
+    $(document).ready(function () {
+        $(document).on('click', '.j_mx_s', function () {
+            $('.mx').removeClass('d-none');
+            $('.svr').addClass('d-none');
 
-    });
+        });
 
-    $(document).on('click','.j_end',function (){
-        $('.mx , .svr').addClass('d-none');
-    });
+        $(document).on('click', '.j_end', function () {
+            $('.mx , .svr').addClass('d-none');
+        });
 
-    $(document).on('click','.j_svr_s',function (){
-        $('.svr').removeClass('d-none');
-        $('.mx').addClass('d-none');
+        $(document).on('click', '.j_svr_s', function () {
+            $('.svr').removeClass('d-none');
+            $('.mx').addClass('d-none');
 
+        });
     });
 
 
